@@ -1,2 +1,2 @@
 @echo off
-PowerShell -File "E:\Windows\capturasXbox.ps1"
+start powershell.exe -NoProfile -ExecutionPolicy Bypass -File "MoverCapturas.ps1" -NoNewWindow
