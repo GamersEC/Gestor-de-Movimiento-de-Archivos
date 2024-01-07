@@ -21,7 +21,7 @@ if (-not $script:Configurado) {
 
 # Notificación de inicio del script
 if (Get-Command "New-BurntToastNotification" -ErrorAction SilentlyContinue) {
-    New-BurntToastNotification -Text "El script se está ejecutando al iniciar el PC." -AppLogo E:\Windows\Recurso-1.ico
+    New-BurntToastNotification -Text "El script se está ejecutando al iniciar el PC." -AppLogo Recurso-1.ico
 } else {
     Write-Host "Para mostrar la notificación, instala el módulo BurntToast."
 }
@@ -30,7 +30,7 @@ if (Get-Command "New-BurntToastNotification" -ErrorAction SilentlyContinue) {
 if (!(Test-Path $origen) -or !(Get-ChildItem $origen)) {
     # Mostrar notificación en Windows de que no hay archivos para mover
     if (Get-Command "New-BurntToastNotification" -ErrorAction SilentlyContinue) {
-        New-BurntToastNotification -Text "No se pueden mover archivos de la carpeta de origen porque se encuentra vacía." -AppLogo E:\Windows\Recurso-1.ico
+        New-BurntToastNotification -Text "No se pueden mover archivos de la carpeta de origen porque se encuentra vacía." -AppLogo Recurso-1.ico
     } else {
         Write-Host "Para mostrar la notificación, instala el módulo BurntToast."
     }
@@ -52,7 +52,7 @@ foreach ($archivo in $archivos) {
     } catch {
         # Notificación en caso de error
         if (Get-Command "New-BurntToastNotification" -ErrorAction SilentlyContinue) {
-            New-BurntToastNotification -Text "Error al mover archivos: $_" -AppLogo E:\Windows\Recurso-1.ico
+            New-BurntToastNotification -Text "Error al mover archivos: $_" -AppLogo Recurso-1.ico
         } else {
             Write-Host "Para mostrar la notificación, instala el módulo BurntToast."
         }
@@ -67,7 +67,7 @@ New-Item -ItemType Directory -Force -Path $origen
 
 # Mostrar notificación en Windows
 if (Get-Command "New-BurntToastNotification" -ErrorAction SilentlyContinue) {
-    New-BurntToastNotification -Text "Las Capturas de Xbox se han movido a otra ubicación para liberar espacio." -AppLogo E:\Windows\Recurso-1.ico
+    New-BurntToastNotification -Text "Las Capturas de Xbox se han movido a otra ubicación para liberar espacio." -AppLogo Recurso-1.ico
 } else {
     Write-Host "Para mostrar la notificación, instala el módulo BurntToast."
 }

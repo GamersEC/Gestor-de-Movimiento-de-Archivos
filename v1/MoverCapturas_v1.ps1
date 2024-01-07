@@ -12,7 +12,7 @@ $origen = "C:\Users\marcu\Videos\Captures"
 if (!(Test-Path $origen) -or !(Get-ChildItem $origen)) {
     # Mostrar notificación en Windows de que no hay archivos para mover
     if (Get-Command "New-BurntToastNotification" -ErrorAction SilentlyContinue) {
-        New-BurntToastNotification -Text "No se pueden mover archivos de la carpeta de origen porque se encuentra vacia." -AppLogo Recurso-1.ico
+        New-BurntToastNotification -Text "No se pueden mover archivos de la carpeta de origen porque se encuentra vacia." -AppLogo recursos\Icono-1.ico
     } else {
         Write-Host "Para mostrar la notificación, instala el módulo BurntToast."
     }
@@ -26,7 +26,7 @@ $origen = "C:\Users\marcu\Videos\Captures"
 if (!(Test-Path $origen) -or !(Get-ChildItem $origen)) {
     # Mostrar notificación en Windows de que no hay archivos para mover
     if (Get-Command "New-BurntToastNotification" -ErrorAction SilentlyContinue) {
-        New-BurntToastNotification -Text "No se pueden mover archivos de la carpeta de origen porque se encuentra vacía." -AppLogo Recurso-1.ico
+        New-BurntToastNotification -Text "No se pueden mover archivos de la carpeta de origen porque se encuentra vacía." -AppLogo recursos\Icono-1.ico
     } else {
         Write-Host "Para mostrar la notificación, instala el módulo BurntToast."
     }
@@ -56,7 +56,7 @@ New-Item -ItemType Directory -Force -Path $origen
 
 # Mostrar notificación en Windows
 if (Get-Command "New-BurntToastNotification" -ErrorAction SilentlyContinue) {
-    New-BurntToastNotification -Text "Las Capturas de Xbox se han movido a otra ubicación para liberar espacio." -AppLogo E:\Windows\Recurso-1.ico
+    New-BurntToastNotification -Text "Las Capturas de Xbox se han movido a otra ubicación para liberar espacio." -AppLogo recursos\Icono-1.ico
 } else {
     Write-Host "Para mostrar la notificación, instala el módulo BurntToast."
 }
