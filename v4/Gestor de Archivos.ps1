@@ -1,5 +1,12 @@
+# Verificar si el módulo BurntToast está instalado
+if (-not (Get-Module -ListAvailable -Name BurntToast)) {
+    # Instalar el módulo BurntToast
+    Install-Module -Name BurntToast -Scope CurrentUser -Force
+}
+
 # Importar el módulo BurntToast
 Import-Module BurntToast
+
 
 # Obtener la ruta del directorio actual del script
 $scriptDirectory = $PSScriptRoot
@@ -17,12 +24,10 @@ if (-not (Test-Path -Path "$scriptDirectory\config.txt")) {
     # Guardar las rutas en un archivo de configuración
     $configContent = "Origen=$origen`nDestino=$destino`nCarpetaLog=$carpetaLog"
     $configContent | Out-File -FilePath "$scriptDirectory\config.txt"
-} else {
-    # Leer las rutas desde el archivo de configuración
-    $config = Get-Content -Path "$scriptDirectory\config.txt"
-    $origen = ($config | Where-Object { $_ -like "Origen=*" }).Substring(7)
-    $destino = ($config | Where-Object { $_ -like "Destino=*" }).Substring(8)
-    $carpetaLog = ($config | Where-Object { $_ -like "CarpetaLog=*" }).Substring(10)
+
+    # Mostrar notificación de configuración exitosa con un icono relativo
+    $iconoRelativo = Join-Path -Path $scriptDirectory -ChildPath "recursos\Icono-1.ico"
+    New-BurntToastNotification -AppLogo $iconoRelativo -Text "- Configuracion guardada correctamente", "- La carpeta de logs se creo correctamente"
 }
 
 # Obtener todos los archivos en origen
@@ -51,7 +56,7 @@ $carpetaLog = Join-Path -Path $scriptDirectory -ChildPath "Logs"
 New-Item -ItemType Directory -Force -Path $carpetaLog
 
 # Crear un archivo de registro en la ruta especificada
-$nombreLog = "MovimientoArchivos_$(Get-Date -Format 'yyyyMMdd_HHmmss').log"
+$nombreLog = "Registro_$(Get-Date -Format 'dd-MM-yyyy_HH-mm-').log"
 $rutaLog = Join-Path -Path $carpetaLog -ChildPath $nombreLog
 
 # Registrar el resultado en el archivo de registro
@@ -60,7 +65,7 @@ $mensajeLog | Out-File -FilePath $rutaLog -Append
 
 # Notificación final
 if ($ErroresMovimiento -eq 0) {
-    New-BurntToastNotification -Text "Archivos movidos correctamente. Registro guardado en $rutaLog"
+    New-BurntToastNotification -AppLogo $iconoRelativo -Text "Proceso completado", "Archivos movidos correctamente."
 } else {
-    New-BurntToastNotification -Text "Algunos archivos tuvieron errores al moverlos. Registro guardado en $rutaLog"
+    New-BurntToastNotification -AppLogo $iconoRelativo -Text "Proceso con errores", "Algunos archivos tuvieron errores al moverlos. Revise el registro para tener mas informacion"
 }
