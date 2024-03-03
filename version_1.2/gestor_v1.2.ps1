@@ -12,11 +12,13 @@ $scriptDirectory = $PSScriptRoot
 
 # Verificar si es la primera ejecución
 if (-not (Test-Path -Path "$scriptDirectory\config.txt")) {
-    Write-Host "¡Bienvenido al Gestor de Movimiento de Archivos!"
+    Write-Host "************************************************"
+    Write-Host "Bienvenido al Gestor de Movimiento de Archivos"
+    Write-Host "************************************************"
     Write-Host "Este script te permite mover archivos entre rutas especificadas y mantener un registro de las operaciones realizadas."
     Write-Host "Autor: Marcus Mayorga"
-    Write-Host "Versión: 1.2"
-    Write-Host "Verifica que estás usando la versión más reciente para tener las últimas mejoras implementadas"
+    Write-Host "Version: 1.2"
+    Write-Host "Verifica que estas usando la version mas reciente para tener las ultimas mejoras implementadas"
 
     # Solicitar rutas al usuario
     do {
@@ -25,7 +27,7 @@ if (-not (Test-Path -Path "$scriptDirectory\config.txt")) {
 
         # Validar las rutas ingresadas
         if (-not (Test-Path -Path $origen) -or -not (Test-Path -Path $destino)) {
-            Write-Host "Una o ambas rutas no son válidas. Inténtalo nuevamente."
+            Write-Host "Una o ambas rutas no son validas. Intentalo nuevamente."
         }
     } while (-not (Test-Path -Path $origen) -or -not (Test-Path -Path $destino))
 
@@ -39,7 +41,7 @@ if (-not (Test-Path -Path "$scriptDirectory\config.txt")) {
 
     # Mostrar notificación de configuración exitosa con un icono relativo
     $iconoRelativo = Join-Path -Path $scriptDirectory -ChildPath "recursos\Icono-1.ico"
-    New-BurntToastNotification -AppLogo $iconoRelativo -Text "- Configuración guardada correctamente", "- La carpeta de logs se creó correctamente"
+    New-BurntToastNotification -AppLogo $iconoRelativo -Text "- Configuracion guardada correctamente", "- La carpeta de logs se creo correctamente"
 }
 
 
