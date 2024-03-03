@@ -11,7 +11,8 @@ Import-Module BurntToast
 $scriptDirectory = $PSScriptRoot
 
 # Verificar si es la primera ejecución
-if (-not (Test-Path -Path "$scriptDirectory\config.txt")) {
+$archivoConfig = "$scriptDirectory\recursos\config.txt"
+if (-not (Test-Path -Path $archivoConfig)) {
     Write-Host "************************************************"
     Write-Host "Bienvenido al Gestor de Movimiento de Archivos"
     Write-Host "************************************************"
@@ -21,15 +22,8 @@ if (-not (Test-Path -Path "$scriptDirectory\config.txt")) {
     Write-Host "Verifica que estas usando la version mas reciente para tener las ultimas mejoras implementadas"
 
     # Solicitar rutas al usuario
-    do {
-        $origen = Read-Host "Introduce la ruta de origen"
-        $destino = Read-Host "Introduce la ruta de destino"
-
-        # Validar las rutas ingresadas
-        if (-not (Test-Path -Path $origen) -or -not (Test-Path -Path $destino)) {
-            Write-Host "Una o ambas rutas no son validas. Intentalo nuevamente."
-        }
-    } while (-not (Test-Path -Path $origen) -or -not (Test-Path -Path $destino))
+    $origen = Read-Host "Introduce la ruta de origen"
+    $destino = Read-Host "Introduce la ruta de destino"
 
     # Crear la carpeta de logs dentro del directorio actual
     $carpetaLog = Join-Path -Path $scriptDirectory -ChildPath "Logs"
@@ -37,7 +31,7 @@ if (-not (Test-Path -Path "$scriptDirectory\config.txt")) {
 
     # Guardar las rutas en un archivo de configuración
     $configContent = "Origen=$origen`nDestino=$destino`nCarpetaLog=$carpetaLog"
-    $configContent | Out-File -FilePath "$scriptDirectory\recursos\config.txt"
+    $configContent | Out-File -FilePath $archivoConfig
 
     # Mostrar notificación de configuración exitosa con un icono relativo
     $iconoRelativo = Join-Path -Path $scriptDirectory -ChildPath "recursos\Icono-1.ico"
