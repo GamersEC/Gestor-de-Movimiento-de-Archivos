@@ -11,7 +11,7 @@ _Configuración inicial:_
 El script te guiará a través de la configuración inicial, donde podrás especificar las rutas de origen y destino.
 
 _Movimiento de archivos:_
-El script buscará archivos en la ruta de origen y los moverá a la ruta de destino, excluyendo aquellos que contengan “1005.5” en su nombre.
+El script buscará archivos en la ruta de origen y los moverá a la ruta de destino.
 
 _Registro de operaciones:_
 Se creará un archivo de registro en la carpeta de logs para registrar los archivos movidos correctamente y los errores encontrados.
