@@ -73,7 +73,7 @@ __Versiones__
 
 El “Gestor de Movimiento de Archivos” se encuentra en constante desarrollo y mejora. A continuación, se detallan las versiones disponibles:
 
-__Versión 1.0.0 (Lanzamiento Inicial)__
+__Versión 1.0. (Lanzamiento Inicial)__
 
 - Configuración inicial de rutas de origen y destino.
 - Movimiento de archivos entre las rutas especificadas.
@@ -81,6 +81,6 @@ __Versión 1.0.0 (Lanzamiento Inicial)__
 
 
 
-__Versión 1.1.0__
+__Versión 1.1.__
 - Agregada notificación de configuración exitosa con icono personalizado.
 - Corrección de errores menores.
