@@ -76,6 +76,8 @@ $mensajeLog | Out-File -FilePath $rutaLog -Append
 # Notificación final
 if ($ErroresMovimiento -eq 0) {
     New-BurntToastNotification -AppLogo $iconoRelativo -Text "Proceso completado", "Archivos movidos correctamente."
+} elseif ($ArchivosMovidos -eq 0) {
+    New-BurntToastNotification -AppLogo $iconoRelativo -Text "No se encontraron archivos para mover."
 } else {
-    New-BurntToastNotification -AppLogo $iconoRelativo -Text "Proceso con errores", "Algunos archivos tuvieron errores al moverlos. Revise el registro para tener mas informacion"
+    New-BurntToastNotification -AppLogo $iconoRelativo -Text "Proceso con errores", "Algunos archivos tuvieron errores al moverlos. Revise el registro para tener más información."
 }

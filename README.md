@@ -90,4 +90,4 @@ __Versión 1.1__
 __Versión 1.2__
 - El archivo de configuracion ahora se guarda dentro de la carpeta recursos para mantener el orden de los archivos.
 - Se agrego una pantalla de informacion al ejecutar el script por primera vez.
-- Se agrego una validacion de rutas
+- Se agrego una notificacion que muestre cuando no se movieron los archivos.
