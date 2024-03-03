@@ -16,11 +16,18 @@ if (-not (Test-Path -Path "$scriptDirectory\config.txt")) {
     Write-Host "Este script te permite mover archivos entre rutas especificadas y mantener un registro de las operaciones realizadas."
     Write-Host "Autor: Marcus Mayorga"
     Write-Host "Versión: 1.2"
-    Write-Host "Verifica que esta usando la version mas reciente para tener las ultimas mejoras"
+    Write-Host "Verifica que estás usando la versión más reciente para tener las últimas mejoras implementadas"
 
     # Solicitar rutas al usuario
-    $origen = Read-Host "Introduce la ruta de origen"
-    $destino = Read-Host "Introduce la ruta de destino"
+    do {
+        $origen = Read-Host "Introduce la ruta de origen"
+        $destino = Read-Host "Introduce la ruta de destino"
+
+        # Validar las rutas ingresadas
+        if (-not (Test-Path -Path $origen) -or -not (Test-Path -Path $destino)) {
+            Write-Host "Una o ambas rutas no son válidas. Inténtalo nuevamente."
+        }
+    } while (-not (Test-Path -Path $origen) -or -not (Test-Path -Path $destino))
 
     # Crear la carpeta de logs dentro del directorio actual
     $carpetaLog = Join-Path -Path $scriptDirectory -ChildPath "Logs"
@@ -28,12 +35,13 @@ if (-not (Test-Path -Path "$scriptDirectory\config.txt")) {
 
     # Guardar las rutas en un archivo de configuración
     $configContent = "Origen=$origen`nDestino=$destino`nCarpetaLog=$carpetaLog"
-    $configContent | Out-File -FilePath "$scriptDirectory\config.txt"
+    $configContent | Out-File -FilePath "$scriptDirectory\recursos\config.txt"
 
     # Mostrar notificación de configuración exitosa con un icono relativo
     $iconoRelativo = Join-Path -Path $scriptDirectory -ChildPath "recursos\Icono-1.ico"
     New-BurntToastNotification -AppLogo $iconoRelativo -Text "- Configuración guardada correctamente", "- La carpeta de logs se creó correctamente"
 }
+
 
 
 # Obtener todos los archivos en origen

@@ -84,3 +84,9 @@ __Versión 1.0 (Lanzamiento Inicial)__
 __Versión 1.1__
 - Agregada notificación de configuración exitosa con icono personalizado.
 - Corrección de errores menores.
+
+
+
+__Versión 1.2__
+- El archivo de configuracion ahora se guarda dentro de la carpeta recursos para mantener el orden de los archivos.
+- Se agrego una pantalla de informacion al ejecutar el script por primera vez.
